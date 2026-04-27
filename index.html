@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>念宁堂 | 古法膏滋·匠心传承·东方草本轻养专家</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FEFAF5;
+            color: #2C2418;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* 容器通用 */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: rgba(254, 250, 245, 0.96);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(139, 90, 43, 0.1);
+            padding: 16px 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #8B5A2B;
+            cursor: default;
+        }
+        .logo span {
+            font-size: 0.8rem;
+            font-weight: 400;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 2px;
+            color: #B87C4E;
+            display: block;
+            line-height: 1.2;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #3E2C1C;
+            transition: color 0.3s;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover {
+            color: #C17B3C;
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 1.8rem;
+            background: none;
+            border: none;
+            color: #8B5A2B;
+            cursor: pointer;
+        }
+
+        /* 通用按钮 */
+        .btn-primary {
+            display: inline-block;
+            background-color: #C17B3C;
+            color: white;
+            padding: 12px 32px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+
+        .btn-primary:hover {
+            background-color: #9F5E2C;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(193, 123, 60, 0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid #C17B3C;
+            color: #C17B3C;
+            padding: 10px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn-outline:hover {
+            background: #C17B3C;
+            color: white;
+        }
+
+        /* Hero 区域 */
+        .hero {
+            padding: 60px 0 80px 0;
+            background: linear-gradient(135deg, #FFF6ED 0%, #FEE9D8 100%);
+        }
+        .hero-grid {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        .hero-content {
+            flex: 1;
+        }
+        .hero-content .badge {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #C17B3C;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            line-height: 1.2;
+            color: #3E2C1C;
+            margin-bottom: 1.5rem;
+        }
+        .hero-content p {
+            font-size: 1.1rem;
+            color: #5F4A32;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        .hero-image img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 32px;
+            box-shadow: 0 25px 40px -15px rgba(0,0,0,0.2);
+            object-fit: cover;
+        }
+
+        /* 通用区域标题 */
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            font-weight: 500;
+            color: #3E2C1C;
+            margin-bottom: 1rem;
+        }
+        .section-sub {
+            text-align: center;
+            color: #8B6B4C;
+            max-width: 650px;
+            margin: 0 auto 3rem auto;
+            font-size: 1.05rem;
+        }
+
+        /* 产品卡片网格 */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 1rem;
+        }
+        .product-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+            border: 1px solid rgba(193, 123, 60, 0.15);
+        }
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+        }
+        .product-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .product-card:hover .product-img {
+            transform: scale(1.02);
+        }
+        .product-info {
+            padding: 1.5rem;
+        }
+        .product-info h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+            color: #4A3420;
+            margin-bottom: 0.5rem;
+        }
+        .product-info p {
+            color: #6F543A;
+            margin: 0.75rem 0;
+            font-size: 0.95rem;
+        }
+        .price {
+            font-weight: 700;
+            color: #C17B3C;
+            font-size: 1.2rem;
+            margin-top: 0.75rem;
+        }
+
+        /* 品牌故事区 (左右布局) */
+        .story-section {
+            background-color: #FFF6EF;
+            padding: 80px 0;
+            margin: 40px 0;
+        }
+        .story-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+        .story-text {
+            flex: 1;
+        }
+        .story-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 1.2rem;
+            color: #3E2C1C;
+        }
+        .story-text p {
+            margin-bottom: 1.2rem;
+            color: #5C4732;
+            line-height: 1.6;
+        }
+        .story-img {
+            flex: 1;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1);
+        }
+        .story-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* 核心优势卡片 */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0 2rem;
+        }
+        .feature-card {
+            text-align: center;
+            background: white;
+            padding: 2rem 1.5rem;
+            border-radius: 28px;
+            transition: all 0.2s;
+            border: 1px solid #F0E2D4;
+        }
+        .feature-card i {
+            font-size: 2.8rem;
+            color: #C17B3C;
+            margin-bottom: 1rem;
+        }
+        .feature-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+        .feature-card p {
+            color: #6F543A;
+            font-size: 0.9rem;
+        }
+
+        /* 客户评价 */
+        .testimonials {
+            background: #FFF4EA;
+            padding: 70px 0;
+            margin: 50px 0 0;
+        }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .testi-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.02);
+            border: 1px solid #F2E3D6;
+        }
+        .testi-card i.fa-quote-left {
+            color: #E2CBB4;
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+            display: inline-block;
+        }
+        .testi-card p {
+            font-style: italic;
+            margin: 0.8rem 0;
+            color: #4F3A26;
+        }
+        .testi-card h5 {
+            font-weight: 600;
+            margin-top: 1rem;
+            color: #C17B3C;
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: #2C2418;
+            color: #DBC8B2;
+            padding: 48px 0 24px;
+            margin-top: 60px;
+        }
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            border-bottom: 1px solid rgba(219,200,178,0.2);
+            padding-bottom: 32px;
+            margin-bottom: 24px;
+        }
+        .footer-logo h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #F0DDCA;
+        }
+        .footer-links {
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: #DBC8B2;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover {
+            color: #C17B3C;
+        }
+        .social-icons a {
+            color: #DBC8B2;
+            margin-left: 1rem;
+            font-size: 1.3rem;
+            transition: color 0.2s;
+        }
+        .social-icons a:hover {
+            color: #C17B3C;
+        }
+        .copyright {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #A58F74;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 24px;
+            }
+            .nav-links {
+                position: fixed;
+                top: 74px;
+                left: -100%;
+                background: #FEFAF5;
+                width: 80%;
+                height: calc(100vh - 74px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 2rem;
+                gap: 2rem;
+                transition: 0.3s;
+                box-shadow: 2px 0 15px rgba(0,0,0,0.05);
+                border-right: 1px solid #EBDBCE;
+                z-index: 999;
+            }
+            .nav-links.active {
+                left: 0;
+            }
+            .menu-btn {
+                display: block;
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .hero-grid {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-content p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .story-wrapper {
+                flex-direction: column-reverse;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .products-grid {
+                gap: 1.5rem;
+            }
+        }
+
+        /* 平滑滚动偏移 */
+        html {
+            scroll-padding-top: 80px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="container nav-container">
+        <div class="logo">
+            <h1>念宁堂·东方草本轻养专家</h1>
+            <span>古法膏滋 · 东方草本轻养专家</span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">首页</a></li>
+            <li><a href="#products">膏滋系列</a></li>
+            <li><a href="#story">品牌故事</a></li>
+            <li><a href="#features">匠心工艺</a></li>
+            <li><a href="#contact">联系</a></li>
+        </ul>
+        <button class="menu-btn" id="menuToggle" aria-label="菜单"><i class="fas fa-bars"></i></button>
+    </div>
+</nav>
+
+<main>
+    <!-- Hero 区域 / 图片可替换 -->
+    <section id="home" class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <span class="badge">非遗技艺 · 百年传承</span>
+                <h1>膏滋润养，<br>东方食养智慧</h1>
+                <p>遵循古法，九法十要，每一勺皆是浓缩的自然精华。念宁堂，以匠心熬制温润膏方，守护当代人的健康日常。</p>
+                <a href="#products" class="btn-primary">探索膏滋系列 <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
+            </div>
+            <div class="hero-image">
+                <!-- ⭐ 图片替换：主视觉图片 可更换路径（如 ./images/hero.jpg） -->
+                <img src="念宁堂图片/东方草本轻养专家.png" alt="念宁堂古法膏滋展示" style="object-fit:cover;">
+            </div>
+        </div>
+    </section>
+
+    <!-- 特色产品区 / 膏滋系列 图片均可后期更换 -->
+    <section id="products" class="container" style="padding: 70px 0 50px;">
+        <h2 class="section-title">匠心膏滋 · 经典系列</h2>
+        <p class="section-sub">甄选道地食材，手工慢熬，滴滴醇厚，温润滋养</p>
+        <div class="products-grid">
+            <!-- 产品卡片 1 - 图片替换位置 -->
+            <div class="product-card">
+                <img class="product-img" src="念宁堂图片/黄姜膏150.jpg" alt="茯苓黄姜膏" loading="lazy">
+                <!-- ⭐ 替换说明：上方src可替换为实际产品图路径 -->
+                <div class="product-info">
+                    <h3>茯苓黄姜膏</h3>
+                    <p>长白山人参搭配九制黄精，补气养元，适合熬夜乏力人群。</p>
+                    <div class="price">¥368 <span style="font-size:0.8rem; color:#B87C4E;">/ 150g</span></div>
+                </div>
+            </div>
+            <!-- 产品卡片 2 -->
+            <div class="product-card">
+                <img class="product-img" src="念宁堂图片/酸枣仁150.jpg" alt="酸枣仁畅心膏" loading="lazy">
+                <div class="product-info">
+                    <h3>酸枣仁畅心膏</h3>
+                    <p>经典养血配方，当归、川芎、白芍、熟地，温润滋养气色。</p>
+                    <div class="price">¥298 <span style="font-size:0.8rem;">/ 150g</span></div>
+                </div>
+            </div>
+            <!-- 产品卡片 3 -->
+            <div class="product-card">
+                <img class="product-img" src="念宁堂图片/气雪膏150.jpg" alt="阿胶气雪乌黑膏" loading="lazy">
+                <div class="product-info">
+                    <h3>阿胶气雪乌黑膏</h3>
+                    <p>砀山酥梨配枇杷叶，清润降燥，秋冬润喉之选。</p>
+                    <div class="price">¥198 <span style="font-size:0.8rem;">/ 150g</span></div>
+                </div>
+            </div>
+                         <!-- 产品卡片 3 -->
+            <div class="product-card">
+                <img class="product-img" src="念宁堂图片/温玉膏.jpg" alt="温玉膏" loading="lazy">
+                <div class="product-info">
+                    <h3>温玉膏</h3>
+                    <p>砀山酥梨配枇杷叶，清润降燥，秋冬润喉之选。</p>
+                    <div class="price">¥198 <span style="font-size:0.8rem;">/ 200g</span></div>
+                </div>
+            </div>
+                        <!-- 产品卡片 3 -->
+            <div class="product-card">
+                <img class="product-img" src="念宁堂图片/妙峰上玫瑰膏.jpg" alt="妙峰山玫瑰膏" loading="lazy">
+                <div class="product-info">
+                    <h3>妙峰山玫瑰膏</h3>
+                    <p>砀山酥梨配枇杷叶，清润降燥，秋冬润喉之选。</p>
+                    <div class="price">¥198 <span style="font-size:0.8rem;">/ 200g</span></div>
+                </div>
+            </div>
+                        <!-- 产品卡片 3 -->
+            <div class="product-card">
+                <img class="product-img" src="https://picsum.photos/id/96/600/500" alt="秋梨枇杷膏" loading="lazy">
+                <div class="product-info">
+                    <h3>玫瑰悦心膏</h3>
+                    <p>砀山酥梨配枇杷叶，清润降燥，秋冬润喉之选。</p>
+                    <div class="price">¥198 <span style="font-size:0.8rem;">/ 150g</span></div>
+                </div>
+            </div>
+                        <!-- 产品卡片 3 -->
+            <div class="product-card">
+                <img class="product-img" src="https://picsum.photos/id/96/600/500" alt="秋梨枇杷膏" loading="lazy">
+                <div class="product-info">
+                    <h3>御方秋梨膏</h3>
+                    <p>砀山酥梨配枇杷叶，清润降燥，秋冬润喉之选。</p>
+                    <div class="price">¥198 <span style="font-size:0.8rem;">/ 150g</span></div>
+                </div>
+            </div>
+                        <!-- 产品卡片 3 -->
+            <div class="product-card">
+                <img class="product-img" src="https://picsum.photos/id/96/600/500" alt="秋梨枇杷膏" loading="lazy">
+                <div class="product-info">
+                    <h3>嗯嗯畅顺膏</h3>
+                    <p>砀山酥梨配枇杷叶，清润降燥，秋冬润喉之选。</p>
+                    <div class="price">¥198 <span style="font-size:0.8rem;">/ 150g</span></div>
+                </div>
+            </div>
+                        <!-- 产品卡片 3 -->
+            <div class="product-card">
+                <img class="product-img" src="https://picsum.photos/id/96/600/500" alt="秋梨枇杷膏" loading="lazy">
+                <div class="product-info">
+                    <h3>三结膏</h3>
+                    <p>砀山酥梨配枇杷叶，清润降燥，秋冬润喉之选。</p>
+                    <div class="price">¥198 <span style="font-size:0.8rem;">/ 150g</span></div>
+                </div>
+            </div>
+                        <!-- 产品卡片 3 -->
+            <div class="product-card">
+                <img class="product-img" src="念宁堂图片/山楂丸.jpg" alt="秋梨枇杷膏" loading="lazy">
+                <div class="product-info">
+                    <h3>山楂丸</h3>
+                    <p>砀山酥梨配枇杷叶，清润降燥，秋冬润喉之选。</p>
+                    <div class="price">¥198 <span style="font-size:0.8rem;">/ 150g</span></div>
+                </div>
+            </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="#" class="btn-outline">查看全部膏方 <i class="fas fa-chevron-right"></i></a>
+        </div>
+    </section>
+
+    <!-- 品牌故事区域 / 图片可替换 -->
+    <section id="story" class="story-section">
+        <div class="container story-wrapper">
+            <div class="story-text">
+                <h2>始于道光年间 · 四代传承膏方世家</h2>
+                <p>念宁堂源自江南中医世家，清道光年间以“宁心养元膏”闻名乡里。百年来恪守“炮制虽繁必不敢省人工，品味虽贵必不敢减物力”的祖训。</p>
+                <p>如今，我们融合现代食养理念，依然坚持铜锅熬制、武火文火交替，让每一瓶膏滋都保留本真风味与温润效力。从选材到成膏，历经12道工序，只为呈现一勺温润。</p>
+                <a href="#" class="btn-primary" style="background:#9F5E2C; margin-top: 0.5rem;">了解更多传承故事</a>
+            </div>
+            <div class="story-img">
+                <!-- ⭐ 图片替换：品牌故事配图 建议替换为熬膏实拍或药材图 -->
+                <img src="https://picsum.photos/id/108/700/500" alt="古法熬膏工艺" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心优势 / 匠心工艺 -->
+    <section id="features" class="container" style="padding: 40px 0 60px;">
+        <h2 class="section-title">匠心 · 严选 · 真材实料</h2>
+        <p class="section-sub">从原料到舌尖，每一步都追求极致</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-seedling"></i>
+                <h4>道地原材</h4>
+                <p>深入核心产区，精选药食同源食材，源头可溯，品质纯净。</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-fire"></i>
+                <h4>九熬九滤</h4>
+                <p>传承铜锅熬炼技法，慢火细熬，充分萃取植物精华。</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-flask"></i>
+                <h4>0添加 · 纯粹</h4>
+                <p>不添加防腐剂、香精、色素，保留膏滋天然醇香。</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-hand-holding-heart"></i>
+                <h4>一人一方</h4>
+                <p>专业中医团队支持，提供个性化体质调理建议。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 顾客评价区 -->
+    <div class="testimonials">
+        <div class="container">
+            <h2 class="section-title">口碑 · 真心之言</h2>
+            <p class="section-sub">来自膏友们的真实反馈</p>
+            <div class="testimonial-grid">
+                <div class="testi-card">
+                    <i class="fas fa-quote-left"></i>
+                    <p>“坚持喝人参黄精膏一个月，气色明显红润了，睡眠也安稳很多，不愧是古法熬制，很醇厚不腻。” </p>
+                    <h5>—— 杭州 · 李女士</h5>
+                </div>
+                <div class="testi-card">
+                    <i class="fas fa-quote-left"></i>
+                    <p>“秋梨膏是家里必备，孩子换季咳嗽冲水喝，清甜润肺，比超市那些添加剂的安心太多。”</p>
+                    <h5>—— 苏州 · 陈妈妈</h5>
+                </div>
+                <div class="testi-card">
+                    <i class="fas fa-quote-left"></i>
+                    <p>“四物膏对女生太友好了，每个月那几天不痛了，感觉浑身暖暖的，会一直回购。”</p>
+                    <h5>—— 上海 · 王小姐</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 联系区域/简单指引 -->
+    <section id="contact" class="container" style="padding: 60px 0 40px; text-align: center;">
+        <h2 class="section-title">获取专属膏方建议</h2>
+        <p class="section-sub">添加养生顾问，为您一对一解答，定制适合您的膏滋搭配</p>
+        <div style="margin: 2rem auto;">
+            <a href="#" class="btn-primary" style="background:#8B5A2B; padding: 14px 36px;"><i class="fab fa-weixin"></i> 预约顾问</a>
+            <a href="#" class="btn-outline" style="margin-left: 1rem;"><i class="fas fa-phone-alt"></i> 400 882 6618</a>
+        </div>
+    </section>
+</main>
+
+<footer id="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h3>念宁堂</h3>
+                <p style="margin-top: 8px;">古法膏滋 · 润养东方</p>
+            </div>
+            <div class="footer-links">
+                <a href="#home">首页</a>
+                <a href="#products">膏滋系列</a>
+                <a href="#story">品牌故事</a>
+                <a href="#features">匠心工艺</a>
+            </div>
+            <div class="social-icons">
+                <a href="#" aria-label="微博"><i class="fab fa-weibo"></i></a>
+                <a href="#" aria-label="小红书"><i class="fab fa-goodreads-g"></i></a>
+                <a href="#" aria-label="微信"><i class="fab fa-weixin"></i></a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 念宁堂 版权所有 | 传统滋补，食养为先  | 图片仅示意，后期可自由替换</p>
+        </div>
+    </div>
+</footer>
+
+<!-- 移动菜单交互 JS -->
+<script>
+    const menuBtn = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        const icon = menuBtn.querySelector('i');
+        if (navLinks.classList.contains('active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+    });
+
+    const links = document.querySelectorAll('.nav-links a');
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            const icon = menuBtn.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        });
+    });
+    
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if(targetId === "#" || targetId === "") return;
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                const offsetTop = targetElement.offsetTop - 80;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+</script>
+
+<!-- 
+    ========== 图片替换说明（VSCode 中修改非常方便）==========
+    1. Hero主图：<div class="hero-image"> 内的 <img src="..."> 
+    2. 产品图片：每个 .product-card 内的 .product-img，共3张
+    3. 品牌故事配图：.story-img 内的 <img>
+    所有图片地址均为临时占位图，您只需将实际图片放入项目文件夹（如 images/），
+    然后将对应的 src 改为相对路径即可（例如 src="images/hero.jpg"）。
+    推荐在 VSCode 中安装 Live Server 插件，右键 .html 文件 -> Open with Live Server 实时预览。
+-->
+</body>
+</html>
