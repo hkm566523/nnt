@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>购物清单 · 念宁堂</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="wrap">
+  <div class="sec-head" style="padding-top:48px;margin-bottom:28px">
+    <span class="eyebrow" style="justify-content:center">SHOPPING LIST</span>
+    <h1 class="sec-title serif" style="font-size:32px">购物清单</h1>
+  </div>
+  <div id="cartBody"></div>
+</div>
+
+<div id="site-footer"></div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script>
+NNT.renderHeader("cart");
+NNT.renderFooter();
+
+const body = document.getElementById("cartBody");
+
+function render() {
+  const cart = NNT.getCart();
+  if (!cart.length) {
+    body.innerHTML = `
+      <div class="empty">
+        <h2 class="serif">清单还是空的</h2>
+        <p>去挑几款合心意的草本轻养好物吧</p>
+        <a class="btn btn-primary" href="index.html#products">逛逛产品系列</a>
+      </div>`;
+    return;
+  }
+  const FREESHIP = 99;
+  const total = NNT.cartTotal();
+  body.innerHTML = `
+  <div class="cart-layout">
+    <div>${cart.map(i => {
+      const p = getProduct(i.id);
+      return `
+      <div class="cart-item" data-id="${p.id}">
+        <a class="cart-thumb" href="product.html?id=${p.id}">${p.name.slice(0, 1)}</a>
+        <div>
+          <a class="cart-name serif" href="product.html?id=${p.id}">${p.name}</a>
+          <div class="cart-spec">${p.catName} · ${p.spec}</div>
+          <div class="qty" style="transform:scale(.86);transform-origin:left">
+            <button class="q-minus">−</button>
+            <input class="q-input" value="${i.qty}" inputmode="numeric" aria-label="数量">
+            <button class="q-plus">＋</button>
+          </div>
+        </div>
+        <div class="cart-right">
+          <div class="cart-line">¥${p.price * i.qty}</div>
+          <button class="link-remove">移出清单</button>
+        </div>
+      </div>`;
+    }).join("")}
+    </div>
+    <div class="summary">
+      <h3 class="serif">订单摘要</h3>
+      <div class="sum-row"><span>商品件数</span><span>${NNT.cartCount()} 件</span></div>
+      <div class="sum-row"><span>运费</span><span>${total >= FREESHIP ? "免运费" : "¥8（满 ¥99 免运费）"}</span></div>
+      <div class="sum-row total"><span>合计</span><b>¥${total + (total >= FREESHIP ? 0 : 8)}</b></div>
+      <button class="btn btn-primary btn-block" id="checkoutBtn" style="margin-top:18px">去结算</button>
+      <p style="font-size:12px;color:var(--muted);margin-top:12px;text-align:center">支持 7 天无理由退换 · 食养产品开封后除外</p>
+    </div>
+  </div>`;
+
+  body.querySelectorAll(".cart-item").forEach(row => {
+    const pid = row.dataset.id;
+    const input = row.querySelector(".q-input");
+    row.querySelector(".q-minus").onclick = () => { NNT.setQty(pid, (+input.value || 1) - 1); render(); };
+    row.querySelector(".q-plus").onclick = () => { NNT.setQty(pid, (+input.value || 1) + 1); render(); };
+    input.onchange = () => { NNT.setQty(pid, Math.max(1, parseInt(input.value, 10) || 1)); render(); };
+    row.querySelector(".link-remove").onclick = () => { NNT.setQty(pid, 0); render(); };
+  });
+  document.getElementById("checkoutBtn").onclick = () => alert("演示站点：接入微信支付 / 支付宝时替换此按钮逻辑。");
+}
+render();
+</script>
+</body>
+</html>
